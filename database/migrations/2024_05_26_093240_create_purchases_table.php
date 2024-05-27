@@ -17,8 +17,7 @@ return new class extends Migration
             $table->integer('total_item');
             $table->integer('total_price');
             $table->tinyInteger('discount')->default(0);
-            $table->integer('payment');
-
+            $table->integer('payment')->default(0);
             $table->timestamps();
         });
     }

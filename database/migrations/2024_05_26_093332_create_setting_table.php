@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('setting', function (Blueprint $table) {
-            $table->id();
+            $table->increments('setting_id');
+            $table->string('company_name');
+            $table->text('address')->nullable();
+            $table->string('phone_number');
+            $table->tinyInteger('note_type');
+            $table->string('logo_path');
+            $table->string('card_member_path');
             $table->timestamps();
         });
     }

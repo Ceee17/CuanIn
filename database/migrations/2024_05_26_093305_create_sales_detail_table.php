@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sales_detail', function (Blueprint $table) {
-            $table->id();
+            $table->increments('sales_detail_id');
+            $table->integer('sales_id');
+            $table->integer('product_id');
+            $table->integer('selling_price');
+            $table->integer('amount')->default(0);
+            $table->integer('subtotal');
             $table->timestamps();
         });
     }
