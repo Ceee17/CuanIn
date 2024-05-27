@@ -65,16 +65,28 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-===== TO RUN =====
-<!-- run for Tailwind -->
-npm run dev
-<!-- active laragon / xampp -->
-<!-- or -->
-php artisan serve
-
 ===== PREPARE THE DATABASE =====
 psql -U postgres
 CREATE DATABASE cuanin;
 \q
 
+<!-- migrate the database -->
+
 php artisan migrate
+
+===== UPDATE PACKAGE =====
+composer update
+composer install
+npm install
+
+===== TO RUN =====
+
+<!-- run for Tailwind -->
+<!-- MAKE SURE TO RUN THIS -->
+
+npm run dev
+
+<!-- active laragon / xampp -->
+<!-- or -->
+
+php artisan serve
