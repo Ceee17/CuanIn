@@ -22,7 +22,7 @@ Route::get('/admin/dashboard', function(){
 
 Route::prefix('cashier')->group(function () {
     // Route::get('/', fn()=> redirect()->route('/dashboard'));
-    Route::get('/dashboard', fn()=> view('layouts.cashier-main'))->middleware(['auth', 'verified'])->name('cashier.dashboard');
+    Route::get('/dashboard', fn()=> view('cashier.dashboard'))->middleware(['auth', 'verified'])->name('cashier.dashboard');
     // Route::get('/sales', [CashierController::class, 'sales'])->name('cashier.sales');
     // Route::get('/transactions', [CashierController::class, 'transactions'])->name('cashier.transactions');
 });
