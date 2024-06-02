@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn() => redirect()->route('login'));
 
 Route::get('/admin/dashboard', function(){
-    return view('layouts.admin-main');
-});
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('cashier')->group(function () {
+    // Route::get('/', fn()=> redirect()->route('/dashboard'));
+    Route::get('/dashboard', fn()=> view('cashier.dashboard'))->middleware(['auth', 'verified'])->name('cashier.dashboard');
+    // Route::get('/sales', [CashierController::class, 'sales'])->name('cashier.sales');
+    // Route::get('/transactions', [CashierController::class, 'transactions'])->name('cashier.transactions');
+});
 
 
 Route::middleware('auth')->group(function () {
