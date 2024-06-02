@@ -14,11 +14,11 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', fn() => redirect()->route('/login'));
+Route::get('/', fn() => redirect()->route('login'));
 
 Route::get('/admin/dashboard', function(){
-    return view('layouts.admin-main');
-});
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 Route::prefix('cashier')->group(function () {
     // Route::get('/', fn()=> redirect()->route('/dashboard'));
