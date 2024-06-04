@@ -34,7 +34,7 @@
           </li>
           <li class="nav-header">PRODUCT</li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ route('category.index') }}" class="nav-link">
               <i class="nav-icon fa fa-th-list"></i>
               <p>
                 Kategori
