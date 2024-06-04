@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,14 @@ Route::get('/', fn() => redirect()->route('login'));
 Route::get('/admin/dashboard', function(){
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
+    Route::resource('/category', ProductCategoryController::class);
+
+});
+
 
 Route::prefix('cashier')->group(function () {
     // Route::get('/', fn()=> redirect()->route('/dashboard'));
