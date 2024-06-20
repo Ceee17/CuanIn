@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    <h1>Dashboard</h1>
+    <h1>Cashier Dashboard</h1>
 @endsection
 
 
