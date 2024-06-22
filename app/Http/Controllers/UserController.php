@@ -143,6 +143,7 @@ class UserController extends Controller
         return response()->json($user, 200);
     }
 
+
     public function updateProfilePhoto(Request $request)
     {
         $user = auth()->user();

@@ -13,6 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        // Example data
         $categories = [
             [
                 'category_name' => 'Electronics',

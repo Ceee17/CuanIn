@@ -50,6 +50,7 @@
                                 <div class="help-block with-errors"></div>
                                 <br>
                                 <div class="tampil-logo">
+                                    <!-- Placeholder for displaying the logo -->
                                 </div>
                             </div>
                         </div>
@@ -64,6 +65,7 @@
                                 <div class="help-block with-errors"></div>
                                 <br>
                                 <div class="tampil-kartu-member">
+                                    <!-- Placeholder for displaying the card member image -->
                                 </div>
                             </div>
                         </div>

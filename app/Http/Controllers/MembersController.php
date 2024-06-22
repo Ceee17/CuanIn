@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Setting;
 
+
+
+
 class MembersController extends Controller
 {
     /**
@@ -76,6 +79,8 @@ class MembersController extends Controller
         return response()->json('Data berhasil disimpan', 200);
     }
 
+
+
     /**
      * Display the specified resource.
      */
@@ -122,7 +127,6 @@ class MembersController extends Controller
 
         return response(null, 204);
     }
-
     public function cetakMember(Request $request)
     {
         $member_data = collect(array());
