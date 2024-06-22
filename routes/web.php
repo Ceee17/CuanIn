@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductsController;
-
+use App\Http\Controllers\ProductCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,11 +26,13 @@ Route::get('/admin/dashboard', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
     Route::resource('/category', ProductCategoryController::class);
-
     Route::get('/products/data', [ProductsController::class, 'data'])->name('products.data');
     Route::post('/products/delete-selected', [ProductsController::class, 'deleteSelected'])->name('products.delete_selected');
     Route::post('/products/cetak-barcode', [ProductsController::class, 'cetakBarcode'])->name('products.cetak_barcode');
     Route::resource('/products', ProductsController::class);
+    Route::get('/member/data', [MembersController::class, 'data'])->name('member.data');
+    Route::post('/member/cetak-member', [MembersController::class, 'cetakMember'])->name('member.cetak_member');
+    Route::resource('/member', MembersController::class);
 });
 
 
