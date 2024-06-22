@@ -7,6 +7,7 @@ use App\Http\Controllers\SalesController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SpendingController;
 use App\Http\Controllers\SupplierController;
@@ -31,6 +32,7 @@ Route::get('/', fn () => redirect()->route('login'));
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
@@ -81,9 +83,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/laporan/data/{awal}/{akhir}', [ReportsController::class, 'data'])->name('reports.data');
     Route::get('/laporan/pdf/{awal}/{akhir}', [ReportsController::class, 'exportPDF'])->name('reports.export_pdf');
 
+
     Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
     Route::resource('/user', UserController::class);
 
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
+    Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 });
 
 
