@@ -3,8 +3,8 @@
     <a href="index3.html" class="brand-link">
         {{-- <img src="{{ asset('/assets/Designer.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8"> --}}
-        <img src="{{ url('/assets/Designer.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
+        <img src="{{ asset('storage/' . $setting->logo_path) }}" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ config('app.name') ? config('app.name') : 'CuanIn' }}</span>
     </a>
 
@@ -13,11 +13,14 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('/AdminLTE-3.2.0/dist/img/user1-128x128.jpg') }}" class="img-circle elevation-2"
-                    alt="User Image">
+                {{-- <img src="{{ auth()->user()->photo ? url('storage/' . auth()->user()->photo) : url('/assets/user.png') }}"
+                    class="img-circle elevation-2" alt="User Image"> --}}
+                <img src="{{ auth()->user()->photo ? asset('storage/' . auth()->user()->photo) : asset('/assets/user.png') }}"
+                    class="img-circle elevation-2" alt="User Image">
+
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                <a href="{{ route('profile.edit') }}" class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
         <!-- Sidebar Menu -->
@@ -27,7 +30,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                    <a href="{{ route('dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard

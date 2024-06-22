@@ -45,7 +45,8 @@
                                 </div>
                                 <div class="help-block with-errors"></div>
                                 <br>
-                                <div class="tampil-logo"></div>
+                                <div class="tampil-logo">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -58,7 +59,8 @@
                                 </div>
                                 <div class="help-block with-errors"></div>
                                 <br>
-                                <div class="tampil-kartu-member"></div>
+                                <div class="tampil-kartu-member">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -140,10 +142,10 @@
                         $('.logo-lg').text(response.company_name);
 
                         $('.tampil-logo').html(
-                            `<img src="{{ url('/') }}${response.logo_path}" width="200">`);
+                            `<img src="{{ asset('storage') }}/${response.logo_path}" width="200">`);
                         $('.tampil-kartu-member').html(
-                            `<img src="{{ url('/') }}${response.card_member_path}" width="300">`);
-                        $('[rel=icon]').attr('href', `{{ url('/') }}/${response.logo_path}`);
+                            `<img src="{{ asset('storage') }}/${response.card_member_path}" width="300">`);
+                        $('[rel=icon]').attr('href', `{{ asset('storage') }}/${response.logo_path}`);
                     })
                     .fail(errors => {
                         alert('Tidak dapat menampilkan data');

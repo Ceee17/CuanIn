@@ -12,14 +12,14 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
-
-                        <p>New Orders</p>
+                        <h3>{{ $kategori }}</h3>
+                        <p>Kategori</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <i class="fa fa-sitemap"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('category.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -27,14 +27,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                        <p>Bounce Rate</p>
+                        <h3>{{ $produk }}</h3>
+                        <p>Total Produk</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="fa fa-cube"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('products.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -42,14 +42,14 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
-
-                        <p>User Registrations</p>
+                        <h3>{{ $member }}</h3>
+                        <p>Total Member</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('member.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -57,43 +57,30 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
-
-                        <p>Unique Visitors</p>
+                        <h3>{{ $supplier }}</h3>
+                        <p>Total Supplier</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="nav-icon fa fa-handshake"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{ route('supplier.index') }}" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Monthly Recap Report</h5>
-
+                        <h5 class="card-title">Grafik Pendapatan {{ convertDateFormat($tanggal_awal, false) }} s/d
+                            {{ convertDateFormat($tanggal_akhir, false) }}</h5>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fas fa-wrench"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                    <a href="#" class="dropdown-item">Action</a>
-                                    <a href="#" class="dropdown-item">Another action</a>
-                                    <a href="#" class="dropdown-item">Something else here</a>
-                                    <a class="dropdown-divider"></a>
-                                    <a href="#" class="dropdown-item">Separated link</a>
-                                </div>
-                            </div>
                             <button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
                             </button>
@@ -102,58 +89,12 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-8">
-                                <p class="text-center">
-                                    <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                                </p>
-
+                            <div class="col-md-12">
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
-                                    <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
+                                    <canvas id="salesChart" height="100" style="height: 100px;"></canvas>
                                 </div>
                                 <!-- /.chart-responsive -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-4">
-                                <p class="text-center">
-                                    <strong>Goal Completion</strong>
-                                </p>
-
-                                <div class="progress-group">
-                                    Add Products to Cart
-                                    <span class="float-right"><b>160</b>/200</span>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                                <!-- /.progress-group -->
-
-                                <div class="progress-group">
-                                    Complete Purchase
-                                    <span class="float-right"><b>310</b>/400</span>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-danger" style="width: 75%"></div>
-                                    </div>
-                                </div>
-
-                                <!-- /.progress-group -->
-                                <div class="progress-group">
-                                    <span class="progress-text">Visit Premium Page</span>
-                                    <span class="float-right"><b>480</b>/800</span>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-success" style="width: 60%"></div>
-                                    </div>
-                                </div>
-
-                                <!-- /.progress-group -->
-                                <div class="progress-group">
-                                    Send Inquiries
-                                    <span class="float-right"><b>250</b>/500</span>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                    </div>
-                                </div>
-                                <!-- /.progress-group -->
                             </div>
                             <!-- /.col -->
                         </div>
@@ -164,40 +105,37 @@
                         <div class="row">
                             <div class="col-sm-3 col-6">
                                 <div class="description-block border-right">
-                                    <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                        17%</span>
-                                    <h5 class="description-header">$35,210.43</h5>
-                                    <span class="description-text">TOTAL REVENUE</span>
+                                    <h5 class="description-header">
+                                        {{ 'Rp ' . convertCurrencyFormat($dashboard_penjualan) }}
+                                    </h5>
+                                    <span class="description-text">TOTAL PENJUALAN</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-3 col-6">
                                 <div class="description-block border-right">
-                                    <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>
-                                        0%</span>
-                                    <h5 class="description-header">$10,390.90</h5>
-                                    <span class="description-text">TOTAL COST</span>
+                                    <h5 class="description-header">
+                                        {{ 'Rp ' . convertCurrencyFormat($dashboard_pembelian) }}</h5>
+                                    <span class="description-text">TOTAL PEMBELIAN</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-3 col-6">
                                 <div class="description-block border-right">
-                                    <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                        20%</span>
-                                    <h5 class="description-header">$24,813.53</h5>
-                                    <span class="description-text">TOTAL PROFIT</span>
+                                    <h5 class="description-header">
+                                        {{ 'Rp ' . convertCurrencyFormat($dashboard_pengeluaran) }}</h5>
+                                    <span class="description-text">TOTAL PENGELUARAN</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-3 col-6">
                                 <div class="description-block">
-                                    <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i>
-                                        18%</span>
-                                    <h5 class="description-header">1200</h5>
-                                    <span class="description-text">GOAL COMPLETIONS</span>
+                                    <h5 class="description-header">
+                                        {{ 'Rp ' . convertCurrencyFormat($dashboard_pendapatan) }}</h5>
+                                    <span class="description-text">TOTAL PENDAPATAN</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
@@ -216,103 +154,43 @@
         <div class="card">
             <div class="card-header border-transparent">
                 <h3 class="card-title">Latest Orders</h3>
-
                 <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                            class="fas fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                            class="fas fa-times"></i></button>
                 </div>
             </div>
-            <!-- /.card-header -->
             <div class="card-body p-0">
-                <div class="table-responsive">
+                <div class="table-responsive table-striped">
                     <table class="table m-0">
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Status</th>
-                                <th>Popularity</th>
+                                <th>Sales ID</th>
+                                <th>Member</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="badge badge-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="badge badge-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-info">Processing</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="badge badge-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="badge badge-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td>{{ $order->sales_id ?? $order->order_id }}
+                                    </td>
+                                    <td>{{ $order->member->name ?? 'N/A' }}</td>
+                                    <td>{{ $order->total_item }}</span>
+                                    </td>
+                                    <td>{{ 'Rp. ' . convertCurrencyFormat($order->total_price) }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-                <!-- /.table-responsive -->
             </div>
-            <!-- /.card-body -->
             <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                <a href="{{ route('transaksi.baru') }}" class="btn btn-sm btn-info float-left">Buat Transaksi Baru</a>
+                <a href="{{ route('sales.index') }}" class="btn btn-sm btn-secondary float-right">Lihat Semua</a>
             </div>
-            <!-- /.card-footer -->
         </div>
 
         <!-- PRODUCT LIST -->
@@ -332,70 +210,29 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
                 <ul class="products-list product-list-in-card pl-2 pr-2">
-                    <li class="item">
-                        <div class="product-img">
-                            <img src="{{ asset('/AdminLTE-3.2.0/dist/img/default-150x150.png') }}" alt="Product Image"
-                                class="img-size-50">
-                        </div>
-                        <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">Samsung TV
-                                <span class="badge badge-warning float-right">$1800</span></a>
-                            <span class="product-description">
-                                Samsung 32" 1080p 60Hz LED Smart HDTV.
-                            </span>
-                        </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                        <div class="product-img">
-                            <img src="{{ asset('/AdminLTE-3.2.0/dist/img/default-150x150.png') }}" alt="Product Image"
-                                class="img-size-50">
-                        </div>
-                        <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">Bicycle
-                                <span class="badge badge-info float-right">$700</span></a>
-                            <span class="product-description">
-                                26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                            </span>
-                        </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                        <div class="product-img">
-                            <img src="{{ asset('/AdminLTE-3.2.0/dist/img/default-150x150.png') }}" alt="Product Image"
-                                class="img-size-50">
-                        </div>
-                        <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">
-                                Xbox One <span class="badge badge-danger float-right">
-                                    $350
+                    @foreach ($recentlyAddedProducts as $product)
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="{{ asset('/AdminLTE-3.2.0/dist/img/default-150x150.png') }}"
+                                    alt="Product Image" class="img-size-50">
+                            </div>
+                            <div class="product-info">
+                                <a href="javascript:void(0)" class="product-title">{{ $product->product_name }}
+                                    <span
+                                        class="badge badge-warning float-right">{{ 'Rp ' . convertCurrencyFormat($product->selling_price) }}</span>
+                                </a>
+                                <span class="product-description">
+                                    {{ 'Stock : ' . $product->stock }}
                                 </span>
-                            </a>
-                            <span class="product-description">
-                                Xbox One Console Bundle with Halo Master Chief Collection.
-                            </span>
-                        </div>
-                    </li>
-                    <!-- /.item -->
-                    <li class="item">
-                        <div class="product-img">
-                            <img src="{{ asset('/AdminLTE-3.2.0/dist/img/default-150x150.png') }}" alt="Product Image"
-                                class="img-size-50">
-                        </div>
-                        <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                <span class="badge badge-success float-right">$399</span></a>
-                            <span class="product-description">
-                                PlayStation 4 500GB Console (PS4)
-                            </span>
-                        </div>
-                    </li>
-                    <!-- /.item -->
+                            </div>
+                        </li>
+                        <!-- /.item -->
+                    @endforeach
                 </ul>
             </div>
             <!-- /.card-body -->
             <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                <a href="{{ route('products.index') }}" class="uppercase">Lihat Semua Produk</a>
             </div>
             <!-- /.card-footer -->
         </div>
@@ -410,3 +247,58 @@
     <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 @endsection
+
+@push('scripts')
+    <!-- ChartJS -->
+    <script src="{{ asset('AdminLTE-3.2.0/plugins/chart.js/Chart.min.js') }}"></script>
+
+    <script>
+        $(function() {
+            // Get the context using jQuery
+            var salesChartCanvas = $('#salesChart');
+            var ctx = salesChartCanvas[0].getContext('2d');
+
+            // Chart.js 3.x syntax for creating a chart
+            var salesChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: {{ json_encode($data_tanggal) }}, // Ensure $data_tanggal is correctly populated in your PHP controller
+                    datasets: [{
+                        label: 'Pendapatan',
+                        data: {{ json_encode($data_pendapatan) }},
+                        backgroundColor: 'rgba(60,141,188,0.9)',
+                        borderColor: 'rgba(60,141,188,0.8)',
+                        pointBackgroundColor: '#3b8bba',
+                        pointBorderColor: 'rgba(60,141,188,1)',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(60,141,188,1)',
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Tanggal'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Pendapatan'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+@endpush

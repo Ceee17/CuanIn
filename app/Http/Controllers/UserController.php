@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -140,5 +141,29 @@ class UserController extends Controller
         $user->update();
 
         return response()->json($user, 200);
+    }
+
+    public function updateProfilePhoto(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('photo')) {
+            // Delete old photo if exists
+            if ($user->photo && Storage::exists($user->photo)) {
+                Storage::delete($user->photo);
+            }
+
+            $file = $request->file('photo');
+            $path = $file->store('photos', 'public'); // Store in storage/app/public/photos
+
+            $user->photo = $path;
+            $user->save();
+        }
+
+        return redirect()->route('profile.edit')->with('status', 'photo-updated');
     }
 }

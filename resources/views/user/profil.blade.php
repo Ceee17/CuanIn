@@ -4,11 +4,6 @@
     Edit Profil
 @endsection
 
-@section('breadcrumb')
-    @parent
-    <li class="active">Edit Profil</li>
-@endsection
-
 @section('content')
 <div class="row">
     <div class="col-lg-12">
@@ -42,7 +37,7 @@
                     <div class="form-group row">
                         <label for="old_password" class="col-lg-2 control-label">Password Lama</label>
                         <div class="col-lg-6">
-                            <input type="password" name="old_password" id="old_password" class="form-control" 
+                            <input type="password" name="old_password" id="old_password" class="form-control"
                             minlength="6">
                             <span class="help-block with-errors"></span>
                         </div>
@@ -50,7 +45,7 @@
                     <div class="form-group row">
                         <label for="password" class="col-lg-2 control-label">Password</label>
                         <div class="col-lg-6">
-                            <input type="password" name="password" id="password" class="form-control" 
+                            <input type="password" name="password" id="password" class="form-control"
                             minlength="6">
                             <span class="help-block with-errors"></span>
                         </div>
@@ -58,7 +53,7 @@
                     <div class="form-group row">
                         <label for="password_confirmation" class="col-lg-2 control-label">Konfirmasi Password</label>
                         <div class="col-lg-6">
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" 
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
                                 data-match="#password">
                             <span class="help-block with-errors"></span>
                         </div>
@@ -103,7 +98,7 @@
                 })
                 .fail(errors => {
                     if (errors.status == 422) {
-                        alert(errors.responseJSON); 
+                        alert(errors.responseJSON);
                     } else {
                         alert('Tidak dapat menyimpan data');
                     }

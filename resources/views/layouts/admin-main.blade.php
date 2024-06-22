@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $setting->company_name }} | @yield('title')</title>
-    <link rel="shortcut icon" href="{{ url($setting->logo_path) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/' . $setting->logo_path) }}" type="image/x-icon">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -39,6 +39,7 @@
     <link rel="stylesheet"
         href="{{ asset('/AdminLTE-3.2.0/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     @stack('css')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -46,8 +47,8 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('/AdminLTE-3.2.0/dist/img/AdminLTELogo.png') }}"
-                alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="{{ asset('assets/Designer.png') }}" alt="AdminLTELogo" height="150"
+                width="150">
         </div>
 
         <!-- Navbar -->
