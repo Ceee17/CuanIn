@@ -18,7 +18,7 @@ class SettingTableSeeder extends Seeder
             'company_name' => 'CuanIn',
             'address' => 'Jalan jalan.com',
             'phone_number' => '08123456789',
-            'note_type' => 1, // kecil
+            'note_type' => 1, // kecil kalau 2 gede
             'discount' => 5,
             'logo_path' => '/assets/Designer.png',
             'card_member_path' => '/assets/card_background.png',

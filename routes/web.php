@@ -9,6 +9,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PurchasesDetailController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SalesDetailController;
 use App\Models\PurchasesDetail;
@@ -62,6 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
     Route::get('/sales/{id}', [SalesController::class, 'show'])->name('sales.show');
     Route::delete('/sales/{id}', [SalesController::class, 'destroy'])->name('sales.destroy');
+
     Route::get('/transaksi/baru', [SalesController::class, 'create'])->name('transaksi.baru');
     Route::post('/transaksi/simpan', [SalesController::class, 'store'])->name('transaksi.simpan');
     Route::get('/transaksi/selesai', [SalesController::class, 'selesai'])->name('transaksi.selesai');
@@ -72,6 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [SalesDetailController::class, 'loadForm'])->name('transaksi.load_form');
     Route::resource('/transaksi', SalesDetailController::class)
         ->except('create', 'show', 'edit');
+    Route::get('/laporan', [ReportsController::class, 'index'])->name('reports.index');
+    Route::get('/laporan/data/{awal}/{akhir}', [ReportsController::class, 'data'])->name('reports.data');
+    Route::get('/laporan/pdf/{awal}/{akhir}', [ReportsController::class, 'exportPDF'])->name('reports.export_pdf');
 });
 
 

@@ -108,7 +108,7 @@
                     </a>
                 <li class="nav-header">REPORT</li>
                 <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
+                    <a href="{{ route('reports.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-file"></i>
                         <p>Laporan Keuangan</p>
                     </a>
