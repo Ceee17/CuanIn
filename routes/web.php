@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductCategoryController;
 
 /*
@@ -33,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/member/data', [MembersController::class, 'data'])->name('member.data');
     Route::post('/member/cetak-member', [MembersController::class, 'cetakMember'])->name('member.cetak_member');
     Route::resource('/member', MembersController::class);
+    Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
+    Route::resource('/supplier', SupplierController::class);
 });
 
 

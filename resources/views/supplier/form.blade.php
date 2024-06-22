@@ -6,17 +6,30 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Supplier</h5>
+                    <h5 class="modal-title">Modal</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="category_name" class="col-lg-2 col-lg-offset-1 control-label">Kategori</label>
+                        <label for="name" class="col-lg-2 col-lg-offset-1 control-label">Nama</label>
                         <div class="col-lg-6">
-                            <input type="text" name="category_name" id="category_name" class="form-control" required
-                                autofocus>
+                            <input type="text" name="name" id="name" class="form-control" required autofocus>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="telepon" class="col-lg-2 col-lg-offset-1 control-label">Telepon</label>
+                        <div class="col-lg-6">
+                            <input type="text" name="telepon" id="telepon" class="form-control" required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="address" class="col-lg-2 col-lg-offset-1 control-label">Alamat</label>
+                        <div class="col-lg-6">
+                            <textarea name="address" id="address" rows="3" class="form-control"></textarea>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
