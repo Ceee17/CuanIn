@@ -86,7 +86,26 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sales = Sales::findOrFail($request->sales_id);
+        $sales->member_id = $request->member_id;
+        $sales->total_item = $request->total_item;
+        $sales->total_price = $request->total;
+        $sales->discount = $request->discount;
+        $sales->payment = $request->payment;
+        $sales->received = $request->received;
+        $sales->update();
+
+        $detail = SalesDetail::where('sales_id', $sales->sales_id)->get();
+        foreach ($detail as $item) {
+            $item->discount = $request->discount;
+            $item->update();
+
+            $products = Products::find($item->product_id);
+            $products->stock -= $item->amount;
+            $products->update();
+        }
+
+        return redirect()->route('transaksi.selesai');
     }
 
     /**
@@ -118,22 +137,6 @@ class SalesController extends Controller
             ->make(true);
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Sales $sales)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Sales $sales)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

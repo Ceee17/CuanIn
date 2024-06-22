@@ -16,7 +16,6 @@ class SalesDetailController extends Controller
         $products = Products::orderBy('product_name')->get();
         $members = Members::orderBy('name')->get();
         $discount = Setting::first()->discount ?? 0;
-
         // Cek apakah ada transaksi yang sedang berjalan
         if ($sales_id = session('sales_id')) {
             $sales = Sales::find($sales_id);

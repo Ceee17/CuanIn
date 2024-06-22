@@ -17,7 +17,7 @@
                         <th><i class="fa fa-cog"></i></th>
                     </thead>
                     <tbody>
-                        @foreach ($member as $key => $item)
+                        @foreach ($members as $key => $item)
                             <tr>
                                 <td width="5%">{{ $key + 1 }}</td>
                                 <td>{{ $item->name }}</td>

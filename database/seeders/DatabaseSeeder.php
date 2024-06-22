@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SpendingTableSeeder::class,
             SupplierTableSeeder::class,
             SettingTableSeeder::class,
+            MemberSeeder::class,
         ]);
     }
 }

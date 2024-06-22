@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="{{ route('sales.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-upload"></i>
                         <p>
                             Penjualan
@@ -93,14 +93,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('transaksi.index') }}" class="nav-link">
                         <i class="nav-icon fa fa-fast-backward"></i>
                         <p>
                             Transaksi Lama
                         </p>
                     </a>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('transaksi.baru') }}" class="nav-link">
                         <i class="nav-icon fa fa-play"></i>
                         <p>
                             Transaksi Baru

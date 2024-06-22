@@ -15,9 +15,9 @@ return new class extends Migration
             $table->increments('sales_id');
             $table->integer('member_id')->nullable();
             $table->integer('total_item');
-            $table->integer('total_price');
+            $table->decimal('total_price', 10, 2);
             $table->tinyInteger('discount')->default(0);
-            $table->integer('payment')->default(0);
+            $table->decimal('payment', 10, 2)->default(0);
             $table->integer('received')->default(0);
             $table->integer('user_id');
             $table->timestamps();

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin-main')
 
 @section('title')
     Transaksi Penjualan
@@ -115,7 +115,7 @@
                                     <label for="received" class="col-lg-2 control-label">Diterima</label>
                                     <div class="col-lg-8">
                                         <input type="number" id="received" class="form-control" name="received"
-                                            value="{{ $penjualan->received ?? 0 }}">
+                                            value="{{ $sales->received ?? 0 }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -137,7 +137,6 @@
             </div>
         </div>
     </div>
-
     @includeIf('sales_detail.produk')
     @includeIf('sales_detail.member')
 @endsection

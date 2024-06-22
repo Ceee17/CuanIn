@@ -13,7 +13,7 @@ class SalesDetail extends Model
     protected $primaryKey = 'sales_detail_id';
     protected $guarded = [];
 
-    public function product()
+    public function products()
     {
         return $this->hasOne(Products::class, 'product_id', 'product_id');
     }

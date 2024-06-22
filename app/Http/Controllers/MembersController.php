@@ -62,7 +62,7 @@ class MembersController extends Controller
         $member_code = (int) $member->member_code + 1;
 
         $member = new Members();
-        $member->member_code = generate_product_code($member_code, 5);
+        $member->member_code = 'M' . generate_product_code($member_code, 5);
         $member->name = $request->name;
         $member->phone_number = $request->phone_number;
         $member->address = $request->address;

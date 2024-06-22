@@ -58,11 +58,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
     Route::resource('/purchases_detail', PurchasesDetailController::class)
         ->except('create', 'show', 'edit');
-    Route::get('/penjualan/data', [SalesController::class, 'data'])->name('penjualan.data');
-    Route::get('/penjualan', [SalesController::class, 'index'])->name('penjualan.index');
-    Route::get('/penjualan/{id}', [SalesController::class, 'show'])->name('penjualan.show');
-    Route::delete('/penjualan/{id}', [SalesController::class, 'destroy'])->name('penjualan.destroy');
-
+    Route::get('/sales/data', [SalesController::class, 'data'])->name('sales.data');
+    Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+    Route::get('/sales/{id}', [SalesController::class, 'show'])->name('sales.show');
+    Route::delete('/sales/{id}', [SalesController::class, 'destroy'])->name('sales.destroy');
     Route::get('/transaksi/baru', [SalesController::class, 'create'])->name('transaksi.baru');
     Route::post('/transaksi/simpan', [SalesController::class, 'store'])->name('transaksi.simpan');
     Route::get('/transaksi/selesai', [SalesController::class, 'selesai'])->name('transaksi.selesai');
