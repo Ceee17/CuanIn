@@ -140,7 +140,6 @@
     {{-- <script src="{{ asset('/AdminLTE-3.2.0/plugins/chart.js/Chart.min.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     {{-- <script src="{{ asset('/AdminLTE-3.2.0/dist/js/pages/dashboard2.js') }}"></script> --}}
-
     <!-- AdminLTE App -->
     <script src="{{ asset('/AdminLTE-3.2.0/dist/js/adminlte.js') }}"></script>
     <!-- AdminLTE for demo purposes -->

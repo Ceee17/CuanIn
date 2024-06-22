@@ -113,7 +113,6 @@ class DashboardController extends Controller
     {
         return Products::latest()->take(5)->get();
     }
-
     // Get cashier metrics
     private function getCashierMetrics()
     {

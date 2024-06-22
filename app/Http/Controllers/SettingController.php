@@ -21,7 +21,6 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $setting = Setting::first();
-
         $request->validate([
             'company_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',

@@ -30,11 +30,6 @@ use App\Http\Controllers\PurchasesDetailController;
 
 Route::get('/', fn () => redirect()->route('login'));
 
-// Route::get('/admin/dashboard', function () {
-//     return view('admin.dashboard');
-// })->middleware(['auth', 'verified'])->name('admin.dashboard');
-
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
