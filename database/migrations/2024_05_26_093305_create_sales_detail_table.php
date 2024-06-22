@@ -16,8 +16,9 @@ return new class extends Migration
             $table->integer('sales_id');
             $table->integer('product_id');
             $table->integer('selling_price');
-            $table->integer('amount')->default(0);
-            $table->integer('subtotal');
+            $table->integer('amount');
+            $table->tinyInteger('discount')->default(0);
+            $table->decimal('subtotal', 10, 2);
             $table->timestamps();
         });
     }
