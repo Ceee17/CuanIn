@@ -1,18 +1,19 @@
 <?php
 
+use App\Models\PurchasesDetail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SpendingController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PurchasesController;
+use App\Http\Controllers\SalesDetailController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PurchasesDetailController;
-use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\SalesController;
-use App\Http\Controllers\SalesDetailController;
-use App\Models\PurchasesDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
     Route::resource('/purchases_detail', PurchasesDetailController::class)
         ->except('create', 'show', 'edit');
+
     Route::get('/sales/data', [SalesController::class, 'data'])->name('sales.data');
     Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
     Route::get('/sales/{id}', [SalesController::class, 'show'])->name('sales.show');
@@ -74,9 +76,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [SalesDetailController::class, 'loadForm'])->name('transaksi.load_form');
     Route::resource('/transaksi', SalesDetailController::class)
         ->except('create', 'show', 'edit');
+
     Route::get('/laporan', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/laporan/data/{awal}/{akhir}', [ReportsController::class, 'data'])->name('reports.data');
     Route::get('/laporan/pdf/{awal}/{akhir}', [ReportsController::class, 'exportPDF'])->name('reports.export_pdf');
+
+    Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
+    Route::resource('/user', UserController::class);
+
 });
 
 

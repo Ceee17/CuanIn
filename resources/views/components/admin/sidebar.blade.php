@@ -124,7 +124,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('user.index') }}" class="nav-link">
                                 <i class="fa fa-user nav-icon"></i>
                                 <p>User</p>
                             </a>
