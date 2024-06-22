@@ -11,12 +11,7 @@
             text-align: center;
             height: 100px;
         }
-
-        .tampil-terbilang {
-            padding: 10px;
-            background: #f0f0f0;
-        }
-
+        
         .table-pembelian tbody tr:last-child {
             display: none;
         }
@@ -87,7 +82,6 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <div class="tampil-payment bg-primary"></div>
-                            <div class="tampil-terbilang"></div>
                         </div>
                         <div class="col-lg-4">
                             <form action="{{ route('purchases.store') }}" class="form-pembelian" method="post">
@@ -191,7 +185,7 @@
                     alert('Jumlah tidak boleh kurang dari 1');
                     return;
                 }
-                if (jumlah > 10000) {
+                if (jumlah > 100000) {
                     $(this).val(10000);
                     alert('Jumlah tidak boleh lebih dari 10000');
                     return;
