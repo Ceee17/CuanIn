@@ -11,7 +11,7 @@
             text-align: center;
             height: 100px;
         }
-
+        
         .table-pembelian tbody tr:last-child {
             display: none;
         }
