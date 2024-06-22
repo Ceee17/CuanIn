@@ -16,7 +16,7 @@ class MemberSeeder extends Seeder
         // Generate dummy data for members
         $members = [
             [
-                'member_code' => 'M99998',
+                'member_code' => 'M00001',
                 'name' => 'John Doe',
                 'address' => '123 Main St, Anytown',
                 'phone_number' => '123-456-7890',
@@ -24,7 +24,7 @@ class MemberSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'member_code' => 'M99999',
+                'member_code' => 'M00002',
                 'name' => 'Jane Smith',
                 'address' => '456 Elm St, Othertown',
                 'phone_number' => '987-654-3210',

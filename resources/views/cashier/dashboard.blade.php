@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin-main')
 
 @section('title')
     <h1>Cashier Dashboard</h1>
@@ -8,14 +8,14 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <h1 class="ml-2">Welcome Jessen</h1>
+            <h1 class="ml-2">Welcome {{ auth()->user()->name }}</h1>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">CPU Traffic</span>
+                        <span class="info-box-text">Kategori</span>
                         <span class="info-box-number">
                             10
                             <small>%</small>

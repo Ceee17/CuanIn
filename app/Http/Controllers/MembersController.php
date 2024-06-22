@@ -58,11 +58,16 @@ class MembersController extends Controller
      */
     public function store(Request $request)
     {
-        $member = Members::latest()->first() ?? new Members();
-        $member_code = (int) $member->member_code + 1;
+        // Get the latest member
+        $latestMember = Members::latest()->first();
 
+        // Initialize member_code based on the latest member_code found
+        $latestCode = $latestMember ? (int) filter_var($latestMember->member_code, FILTER_SANITIZE_NUMBER_INT) : 0;
+        $member_code = $latestCode + 1;
+
+        // Create a new member instance
         $member = new Members();
-        $member->member_code = 'M' . generate_product_code($member_code, 5);
+        $member->member_code = 'M' . str_pad($member_code, 5, '0', STR_PAD_LEFT); // Ensure the code is 5 digits long
         $member->name = $request->name;
         $member->phone_number = $request->phone_number;
         $member->address = $request->address;
@@ -70,7 +75,6 @@ class MembersController extends Controller
 
         return response()->json('Data berhasil disimpan', 200);
     }
-
 
     /**
      * Display the specified resource.
@@ -124,15 +128,24 @@ class MembersController extends Controller
         $member_data = collect(array());
         foreach ($request->member_id as $id) {
             $member = Members::find($id);
-            $member_data[] = $member;
+            if ($member) {
+                $member_data[] = $member;
+            }
+        }
+
+        if ($member_data->isEmpty()) {
+            return response()->json('No members found', 404);
         }
 
         $member_data = $member_data->chunk(2);
         $setting = Setting::first();
+        if (!$setting) {
+            return response()->json('Settings not found', 500);
+        }
 
         $no  = 1;
         $pdf = PDF::loadView('member.cetak', compact('member_data', 'no', 'setting'));
-        $pdf->setPaper(array(0, 0, 566.93, 850.39), 'potrait');
+        $pdf->setPaper(array(0, 0, 566.93, 850.39), 'portrait');
         return $pdf->stream('member.pdf');
     }
 }

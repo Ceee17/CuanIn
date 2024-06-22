@@ -38,6 +38,7 @@ class SettingController extends Controller
         $setting->note_type = $request->note_type;
 
         if ($request->hasFile('logo_path')) {
+            // Delete old logo if exists
             if ($setting->logo_path && Storage::exists('public/' . $setting->logo_path)) {
                 Storage::delete('public/' . $setting->logo_path);
             }
@@ -58,6 +59,7 @@ class SettingController extends Controller
 
             $setting->card_member_path = $path;
         }
+
         $setting->save();
         return response()->json('Data berhasil disimpan', 200);
     }

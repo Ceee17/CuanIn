@@ -34,6 +34,86 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'category_name' => 'Toys',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Sports',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Health & Beauty',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Automotive',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Jewelry',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Furniture',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Garden & Outdoors',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Music',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Movies',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Office Supplies',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Pet Supplies',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Tools & Home Improvement',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Groceries',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Footwear',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Travel',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_name' => 'Art & Crafts',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         // Insert data into the database
