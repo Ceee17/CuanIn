@@ -4,6 +4,10 @@
     Transaksi Penjualan
 @endsection
 
+@section('breadcrumb')
+    Transaction
+@endsection
+
 @push('css')
     <style>
         .tampil-payment {
@@ -131,7 +135,7 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary btn-sm btn-flat pull-right btn-simpan"><i
+                    <button type="submit" class="btn btn-primary btn-s pull-right btn-simpan"><i
                             class="fa fa-floppy-o"></i> Simpan Transaksi</button>
                 </div>
             </div>

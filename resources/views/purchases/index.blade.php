@@ -4,16 +4,20 @@
     Daftar Pembelian
 @endsection
 
+@section('breadcrumb')
+    Purchases
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
-                <div class="box-header with-border">
-                    <button onclick="addForm()" class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i>
+                <div class="box-header with-border mb-2">
+                    <button onclick="addForm()" class="btn btn-success btn-s"><i class="fa fa-plus-circle"></i>
                         Transaksi Baru</button>
                     @empty(!session('purchase_id'))
-                        <a href="{{ route('purchases_detail.index') }}" class="btn btn-info btn-xs btn-flat"><i
-                                class="fa fa-pencil"></i> Transaksi Aktif</a>
+                        <a href="{{ route('purchases_detail.index') }}" class="btn btn-info btn-s"><i class="fa fa-pencil"></i>
+                            Transaksi Aktif</a>
                     @endempty
                 </div>
                 <div class="box-body table-responsive">

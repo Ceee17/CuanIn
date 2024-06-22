@@ -4,6 +4,10 @@
     Laporan Pendapatan {{ convertDateFormat($tanggalAwal, false) }} s/d {{ convertDateFormat($tanggalAkhir, false) }}
 @endsection
 
+@section('breadcrumb')
+    Reports
+@endsection
+
 @push('css')
     <link rel="stylesheet" href="{{ asset('/AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.css') }}">
 @endpush
@@ -12,14 +16,14 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
-                <div class="box-header with-border">
-                    <button onclick="updatePeriode()" class="btn btn-info btn-xs btn-flat"><i class="fa fa-calendar"></i>
+                <div class="box-header with-border mb-2">
+                    <button onclick="updatePeriode()" class="btn btn-info btn-s"><i class="fa fa-calendar"></i>
                         Ubah Periode</button>
                     <a href="{{ route('reports.export_pdf', [$tanggalAwal, $tanggalAkhir]) }}" target="_blank"
-                        class="btn btn-success btn-xs btn-flat"><i class="fa fa-file-excel-o"></i> Cetak PDF</a>
+                        class="btn btn-success btn-s"><i class="fa fa-file-excel-o"></i> Cetak PDF</a>
                 </div>
                 <div class="box-body table-striped table-responsive">
-                    <table class="table table-stiped table-bordered">
+                    <table class="table table-striped table-bordered">
                         <thead>
                             <th width="5%">No</th>
                             <th>Tanggal</th>

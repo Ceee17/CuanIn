@@ -139,6 +139,7 @@ class MembersController extends Controller
 
         $member_data = $member_data->chunk(2);
         $setting = Setting::first();
+
         if (!$setting) {
             return response()->json('Settings not found', 500);
         }

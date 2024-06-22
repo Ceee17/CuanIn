@@ -4,15 +4,19 @@
     Daftar Member
 @endsection
 
+@section('breadcrumb')
+    Members
+@endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-12">
             <div class="box">
-                <div class="box-header with-border">
-                    <button onclick="addForm('{{ route('member.store') }}')" class="btn btn-success btn-xs btn-flat"><i
+                <div class="box-header with-border mb-2">
+                    <button onclick="addForm('{{ route('member.store') }}')" class="btn btn-success btn-s"><i
                             class="fa fa-plus-circle"></i> Tambah</button>
-                    <button onclick="cetakMember('{{ route('member.cetak_member') }}')"
-                        class="btn btn-info btn-xs btn-flat"><i class="fa fa-id-card"></i> Cetak Member</button>
+                    <button onclick="cetakMember('{{ route('member.cetak_member') }}')" class="btn btn-info btn-s"><i
+                            class="fa fa-id-card"></i> Cetak Member</button>
                 </div>
                 <div class="box-body table-responsive">
                     <form action="" method="post" class="form-member">

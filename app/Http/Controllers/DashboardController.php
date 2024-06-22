@@ -9,6 +9,7 @@ use App\Models\Spending;
 use App\Models\Supplier;
 use App\Models\Purchases;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\ProductCategory;
 
 class DashboardController extends Controller
@@ -51,7 +52,8 @@ class DashboardController extends Controller
                 'recentlyAddedProducts' => $recentlyAddedProducts,
             ], $dashboardMetrics));
         } else {
-            return view('cashier.dashboard');
+            $cashierMetrics = $this->getCashierMetrics();
+            return view('cashier.dashboard', array_merge($cashierMetrics, ['orders' => $orders]));
         }
     }
 
@@ -110,5 +112,30 @@ class DashboardController extends Controller
     private function getRecentlyAddedProducts()
     {
         return Products::latest()->take(5)->get();
+    }
+    // Get cashier metrics
+    private function getCashierMetrics()
+    {
+        $today = Carbon::today();
+        // Format a date
+        $formattedDate = Carbon::now()->format('Y-m-d');
+        // Total new transactions today
+        $totalNewTransactions = Sales::whereDate('created_at', $formattedDate)->count();
+
+        // Total product stock
+        $totalProductStock = Products::sum('stock');
+
+        // Average total price per transaction
+        $averageTotalPricePerTransaction = Sales::avg('payment');
+
+        // Sum of total price sales form$formattedDate
+        $sumTotalPriceSalesToday = Sales::whereDate('created_at', $formattedDate)->sum('payment');
+
+        return [
+            'totalNewTransactions' => $totalNewTransactions,
+            'totalProductStock' => $totalProductStock,
+            'averageTotalPricePerTransaction' => $averageTotalPricePerTransaction,
+            'sumTotalPriceSalesToday' => $sumTotalPriceSalesToday
+        ];
     }
 }

@@ -1,7 +1,11 @@
 @extends('layouts.admin-main')
 
 @section('title')
-    <h1>Kategori</h1>
+    Kategori
+@endsection
+
+@section('breadcrumb')
+    Category
 @endsection
 
 @section('content')

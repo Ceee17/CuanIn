@@ -1,7 +1,11 @@
 @extends('layouts.admin-main')
 
 @section('title')
-    <h1>Admin Dashboard</h1>
+    Admin Dashboard
+@endsection
+
+@section('breadcrumb')
+    Dashboard
 @endsection
 
 @section('content')

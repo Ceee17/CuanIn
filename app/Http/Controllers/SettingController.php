@@ -42,6 +42,7 @@ class SettingController extends Controller
             if ($setting->logo_path && Storage::exists('public/' . $setting->logo_path)) {
                 Storage::delete('public/' . $setting->logo_path);
             }
+
             $file = $request->file('logo_path');
             $path = $file->store('logos', 'public'); // Store in storage/app/public/logos
 
@@ -61,6 +62,7 @@ class SettingController extends Controller
         }
 
         $setting->save();
+
         return response()->json('Data berhasil disimpan', 200);
     }
 }

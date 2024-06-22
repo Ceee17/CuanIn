@@ -1,7 +1,11 @@
 @extends('layouts.admin-main')
 
 @section('title')
-    <h1>Daftar Produk</h1>
+    Daftar Produk
+@endsection
+
+@section('breadcrumb')
+    Products
 @endsection
 
 @section('content')
@@ -12,12 +16,12 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="btn-group">
-                            <button onclick="addForm('{{ route('products.store') }}')"
-                                class="btn btn-success btn-xs btn-flat"><i class="fa fa-plus-circle"></i> Tambah</button>
+                            <button onclick="addForm('{{ route('products.store') }}')" class="btn btn-success btn-s"><i
+                                    class="fa fa-plus-circle"></i> Tambah</button>
                             <button onclick="deleteSelected('{{ route('products.delete_selected') }}')"
-                                class="btn btn-danger btn-xs btn-flat"><i class="fa fa-trash"></i> Hapus</button>
+                                class="btn btn-danger btn-s"><i class="fa fa-trash"></i> Hapus</button>
                             <button onclick="cetakBarcode('{{ route('products.cetak_barcode') }}')"
-                                class="btn btn-info btn-xs btn-flat"><i class="fa fa-barcode"></i> Cetak Barcode</button>
+                                class="btn btn-info btn-s"><i class="fa fa-barcode"></i> Cetak Barcode</button>
                         </div>
                     </div>
 

@@ -4,6 +4,9 @@
     Daftar Penjualan
 @endsection
 
+@section('breadcrumb')
+    Sales
+@endsection
 
 @section('content')
     <div class="row">
