@@ -1,7 +1,7 @@
 @extends('layouts.admin-main')
 
 @section('title')
-    <h1>Admin Dashboard</h1>
+    <h1>Kategori</h1>
 @endsection
 
 @section('content')
