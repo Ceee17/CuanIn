@@ -13,7 +13,6 @@
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>{{ $kategori }}</h3>
-
                         <p>Kategori</p>
                     </div>
                     <div class="icon">
@@ -29,7 +28,6 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>{{ $produk }}</h3>
-
                         <p>Total Produk</p>
                     </div>
                     <div class="icon">
@@ -45,7 +43,6 @@
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>{{ $member }}</h3>
-
                         <p>Total Member</p>
                     </div>
                     <div class="icon">
@@ -61,7 +58,6 @@
                 <div class="small-box bg-danger">
                     <div class="inner">
                         <h3>{{ $supplier }}</h3>
-
                         <p>Total Supplier</p>
                     </div>
                     <div class="icon">
@@ -75,19 +71,16 @@
         </div>
         <!-- /.row -->
         <!-- Main row -->
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Grafik Pendapatan {{ convertDateFormat($tanggal_awal, false) }} s/d
                             {{ convertDateFormat($tanggal_akhir, false) }}</h5>
-
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-
                             <button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
                             </button>
@@ -97,7 +90,6 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-
                                 <div class="chart">
                                     <!-- Sales Chart Canvas -->
                                     <canvas id="salesChart" height="100" style="height: 100px;"></canvas>
@@ -105,7 +97,6 @@
                                 <!-- /.chart-responsive -->
                             </div>
                             <!-- /.col -->
-
                         </div>
                         <!-- /.row -->
                     </div>
@@ -124,7 +115,6 @@
                             <!-- /.col -->
                             <div class="col-sm-3 col-6">
                                 <div class="description-block border-right">
-
                                     <h5 class="description-header">
                                         {{ 'Rp ' . convertCurrencyFormat($dashboard_pembelian) }}</h5>
                                     <span class="description-text">TOTAL PEMBELIAN</span>
@@ -134,7 +124,6 @@
                             <!-- /.col -->
                             <div class="col-sm-3 col-6">
                                 <div class="description-block border-right">
-
                                     <h5 class="description-header">
                                         {{ 'Rp ' . convertCurrencyFormat($dashboard_pengeluaran) }}</h5>
                                     <span class="description-text">TOTAL PENGELUARAN</span>
@@ -144,7 +133,6 @@
                             <!-- /.col -->
                             <div class="col-sm-3 col-6">
                                 <div class="description-block">
-
                                     <h5 class="description-header">
                                         {{ 'Rp ' . convertCurrencyFormat($dashboard_pendapatan) }}</h5>
                                     <span class="description-text">TOTAL PENDAPATAN</span>
@@ -248,7 +236,6 @@
             </div>
             <!-- /.card-footer -->
         </div>
-
         <!-- /.card -->
     </div>
     <!-- /.col -->
@@ -260,7 +247,6 @@
     <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 @endsection
-
 
 @push('scripts')
     <!-- ChartJS -->
