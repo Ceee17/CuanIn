@@ -56,7 +56,6 @@ class PurchasesController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
-
     //    <button type="button" onclick="editForm(`' . route('purchases.update', $purchases->purchase_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fas fa-pen"></i></button>
     /**
      * Show the form for creating a new resource.
