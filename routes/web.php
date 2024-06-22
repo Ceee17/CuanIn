@@ -28,7 +28,6 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
     Route::resource('/category', ProductCategoryController::class);
