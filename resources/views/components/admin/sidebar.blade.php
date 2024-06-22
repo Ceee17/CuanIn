@@ -195,7 +195,88 @@
                             Transaksi Baru
                         </p>
                     </a>
+                <li class="nav-item">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">INVENTORY MANGEMENT</li>
+                <li class="nav-item">
+                    <a href="{{ route('category.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-th-list"></i>
+                        <p>
+                            Kategori
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('products.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-cubes"></i>
+                        <p>
+                            Produk
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('member.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-id-card"></i>
+                        <p>
+                            Member
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('supplier.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-handshake"></i>
+                        <p>
+                            Supplier
+                        </p>
+                    </a>
+                </li>
 
+                <li class="nav-header">TRANSACTION MANAGEMENT</li>
+                <li class="nav-item">
+                    <a href="{{ route('spending.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-credit-card"></i>
+                        <p>
+                            Pengeluaran
+                        </p>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="pages/gallery.html" class="nav-link">
+                        <i class="nav-icon fa fa-download"></i>
+                        <p>
+                            Pembelian
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/kanban.html" class="nav-link">
+                        <i class="nav-icon fa fa-upload"></i>
+                        <p>
+                            Penjualan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-fast-backward"></i>
+                        <p>
+                            Transaksi Lama
+                        </p>
+                    </a>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa fa-play"></i>
+                        <p>
+                            Transaksi Baru
+                        </p>
+                    </a>
                 <li class="nav-header">REPORT</li>
                 <li class="nav-item">
                     <a href="iframe.html" class="nav-link">

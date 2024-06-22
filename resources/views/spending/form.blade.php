@@ -6,30 +6,24 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Tambah Member</h5>
+                    <h5 class="modal-title">Tambah Pengeluaran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="name" class="col-lg-2 col-lg-offset-1 control-label">Nama</label>
+                        <label for="description" class="col-lg-2 col-lg-offset-1 control-label">Deskripsi</label>
                         <div class="col-lg-6">
-                            <input type="text" name="name" id="name" class="form-control" required autofocus>
+                            <input type="text" name="description" id="description" class="form-control" required
+                                autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="phone_number" class="col-lg-2 col-lg-offset-1 control-label">Telepon</label>
+                        <label for="nominal" class="col-lg-2 col-lg-offset-1 control-label">Nominal</label>
                         <div class="col-lg-6">
-                            <input type="text" name="phone_number" id="phone_number" class="form-control" required>
-                            <span class="help-block with-errors"></span>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="address" class="col-lg-2 col-lg-offset-1 control-label">Alamat</label>
-                        <div class="col-lg-6">
-                            <textarea name="address" id="address" rows="3" class="form-control"></textarea>
+                            <input type="number" name="nominal" id="nominal" class="form-control" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>

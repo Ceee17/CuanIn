@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\SpendingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +35,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/member/data', [MembersController::class, 'data'])->name('member.data');
     Route::post('/member/cetak-member', [MembersController::class, 'cetakMember'])->name('member.cetak_member');
     Route::resource('/member', MembersController::class);
+
     Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
     Route::resource('/supplier', SupplierController::class);
+
+    Route::get('/spending/data', [SpendingController::class, 'data'])->name('spending.data');
+    Route::resource('/spending', SpendingController::class);
+
 });
 
 
