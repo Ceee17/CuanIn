@@ -14,8 +14,8 @@ class CreateProductsTable extends Migration
             $table->string('product_code')->unique();
             $table->string('product_name')->unique();
             $table->string('product_brand')->nullable();
-            $table->decimal('buying_price', 15, 2);
-            $table->decimal('selling_price', 15, 2);
+            $table->integer('buying_price');
+            $table->integer('selling_price');
             $table->integer('discount')->default(0);
             $table->integer('stock');
             $table->timestamps();

@@ -4,9 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SpendingController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PurchasesController;
+use App\Http\Controllers\ProductCategoryController;
+use App\Http\Controllers\PurchasesDetailController;
+use App\Models\PurchasesDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +31,12 @@ Route::get('/admin/dashboard', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
     Route::resource('/category', ProductCategoryController::class);
+
     Route::get('/products/data', [ProductsController::class, 'data'])->name('products.data');
     Route::post('/products/delete-selected', [ProductsController::class, 'deleteSelected'])->name('products.delete_selected');
     Route::post('/products/cetak-barcode', [ProductsController::class, 'cetakBarcode'])->name('products.cetak_barcode');
     Route::resource('/products', ProductsController::class);
+
     Route::get('/member/data', [MembersController::class, 'data'])->name('member.data');
     Route::post('/member/cetak-member', [MembersController::class, 'cetakMember'])->name('member.cetak_member');
     Route::resource('/member', MembersController::class);
@@ -42,6 +47,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/spending/data', [SpendingController::class, 'data'])->name('spending.data');
     Route::resource('/spending', SpendingController::class);
 
+    Route::get('/purchases/data', [PurchasesController::class, 'data'])->name('purchases.data');
+    Route::get('/purchases/{id}/create', [PurchasesController::class, 'create'])->name('purchases.create');
+    Route::resource('/purchases', PurchasesController::class)
+        ->except('create');
+
+    Route::get('/purchases_detail/{id}/data', [PurchasesDetailController::class, 'data'])->name('purchases_detail.data');
+    Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
+    Route::resource('/purchases_detail', PurchasesDetailController::class)
+        ->except('create', 'show', 'edit');
 });
 
 

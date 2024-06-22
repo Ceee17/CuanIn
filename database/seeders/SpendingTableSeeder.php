@@ -2,41 +2,46 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class CategorySeeder extends Seeder
+class SpendingTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $categories = [
+        // Example data
+        $spendings = [
             [
-                'category_name' => 'Electronics',
+                'description' => 'Office Supplies',
+                'nominal' => 150,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'category_name' => 'Clothing',
+                'description' => 'Team Lunch',
+                'nominal' => 300,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'category_name' => 'Home Appliances',
+                'description' => 'Software Subscription',
+                'nominal' => 500,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'category_name' => 'Books',
+                'description' => 'Transport Expenses',
+                'nominal' => 100,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
         ];
 
         // Insert data into the database
-        DB::table('product_category')->insert($categories);
+        DB::table('spending')->insert($spendings);
     }
 }
