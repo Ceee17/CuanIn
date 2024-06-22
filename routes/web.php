@@ -30,7 +30,6 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
     Route::resource('/category', ProductCategoryController::class);
@@ -59,7 +58,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
     Route::resource('/purchases_detail', PurchasesDetailController::class)
         ->except('create', 'show', 'edit');
-
     Route::get('/penjualan/data', [SalesController::class, 'data'])->name('penjualan.data');
     Route::get('/penjualan', [SalesController::class, 'index'])->name('penjualan.index');
     Route::get('/penjualan/{id}', [SalesController::class, 'show'])->name('penjualan.show');

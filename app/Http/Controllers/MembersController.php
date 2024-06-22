@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Setting;
 
-
-
-
 class MembersController extends Controller
 {
     /**
