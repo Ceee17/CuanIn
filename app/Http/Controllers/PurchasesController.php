@@ -48,6 +48,7 @@ class PurchasesController extends Controller
             ->addColumn('action', function ($purchases) {
                 return '
                <div class="btn-group">
+               <button onclick="showDetail(`' . route('purchases.show', $purchases->purchase_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i> Produk</button>
                <button type="button" onclick="deleteData(`' . route('purchases.destroy', $purchases->purchase_id) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i> Hapus</button>
                </div>
                ';
@@ -56,8 +57,7 @@ class PurchasesController extends Controller
             ->make(true);
     }
     //    <button type="button" onclick="editForm(`' . route('purchases.update', $purchases->purchase_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fas fa-pen"></i></button>
-  
-  /**
+    /**
      * Show the form for creating a new resource.
      */
     public function create($id)

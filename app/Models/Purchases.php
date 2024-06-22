@@ -5,7 +5,6 @@ use App\Models\Supplier;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
 class Purchases extends Model
 {
     use HasFactory;

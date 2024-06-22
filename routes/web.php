@@ -9,6 +9,8 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PurchasesDetailController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SalesDetailController;
 use App\Models\PurchasesDetail;
 
 /*
@@ -55,6 +57,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchases_detail/{id}/data', [PurchasesDetailController::class, 'data'])->name('purchases_detail.data');
     Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
     Route::resource('/purchases_detail', PurchasesDetailController::class)
+        ->except('create', 'show', 'edit');
+    Route::get('/penjualan/data', [SalesController::class, 'data'])->name('penjualan.data');
+    Route::get('/penjualan', [SalesController::class, 'index'])->name('penjualan.index');
+    Route::get('/penjualan/{id}', [SalesController::class, 'show'])->name('penjualan.show');
+    Route::delete('/penjualan/{id}', [SalesController::class, 'destroy'])->name('penjualan.destroy');
+
+    Route::get('/transaksi/baru', [SalesController::class, 'create'])->name('transaksi.baru');
+    Route::post('/transaksi/simpan', [SalesController::class, 'store'])->name('transaksi.simpan');
+    Route::get('/transaksi/selesai', [SalesController::class, 'selesai'])->name('transaksi.selesai');
+    Route::get('/transaksi/nota-kecil', [SalesController::class, 'notaKecil'])->name('transaksi.nota_kecil');
+    Route::get('/transaksi/nota-besar', [SalesController::class, 'notaBesar'])->name('transaksi.nota_besar');
+
+    Route::get('/transaksi/{id}/data', [SalesDetailController::class, 'data'])->name('transaksi.data');
+    Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [SalesDetailController::class, 'loadForm'])->name('transaksi.load_form');
+    Route::resource('/transaksi', SalesDetailController::class)
         ->except('create', 'show', 'edit');
 });
 

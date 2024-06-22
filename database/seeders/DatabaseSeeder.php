@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ProductsTableSeeder::class,
             SpendingTableSeeder::class,
             SupplierTableSeeder::class,
+            SettingTableSeeder::class,
         ]);
     }
 }

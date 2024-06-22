@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Members;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-
-
+use App\Models\Setting;
 
 class MembersController extends Controller
 {
@@ -27,7 +26,7 @@ class MembersController extends Controller
             ->addIndexColumn()
             ->addColumn('select_all', function ($products) {
                 return '
-                    <input type="checkbox" name="id_member[]" value="' . $products->member_id . '">
+                    <input type="checkbox" name="member_id[]" value="' . $products->member_id . '">
                 ';
             })
             ->addColumn('member_code', function ($member) {
@@ -129,7 +128,7 @@ class MembersController extends Controller
         }
 
         $member_data = $member_data->chunk(2);
-        // $setting    = Setting::first();
+        $setting = Setting::first();
 
         $no  = 1;
         $pdf = PDF::loadView('member.cetak', compact('member_data', 'no', 'setting'));

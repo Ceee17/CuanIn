@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Models;
-use App\Models\Products;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PurchasesDetail extends Model
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class SalesDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'purchases_detail';
-    protected $primaryKey = 'purchases_detail_id';
+    protected $table = 'sales_detail';
+    protected $primaryKey = 'sales_detail_id';
     protected $guarded = [];
 
-    public function products()
+    public function product()
     {
         return $this->hasOne(Products::class, 'product_id', 'product_id');
     }

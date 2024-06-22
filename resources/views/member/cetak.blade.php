@@ -87,13 +87,13 @@
                     @foreach ($data as $item)
                         <td class="text-center">
                             <div class="box">
-                                {{-- <img src="{{ public_path($setting->path_kartu_member) }}" alt="card" width="50%"> --}}
-                                {{-- <img src="{{ asset('') }}" alt="card" width="50%"> --}}
+                                {{-- <img src="{{ asset($setting->card_member_path) }}" alt="card" width="50%"> --}}
+                                <img src="{{ asset('/assets/card_background.png') }}" alt="card" width="50%">
                                 <div class="logo">
-                                    {{-- <p>{{ $setting->nama_perusahaan }}</p> --}}
-                                    <p>My Company</p>
-                                    {{-- <img src="{{ public_path($setting->path_logo) }}" alt="logo"> --}}
-                                    <img src="{{ asset('assets/Designer.png') }}" alt="logo">
+                                    <p>{{ $setting->company_name }}</p>
+                                    {{-- <p>My Company</p> --}}
+                                    <img src="{{ asset($setting->logo_path) }}" alt="logo">
+                                    {{-- <img src="{{ asset('assets/Designer.png') }}" alt="logo"> --}}
                                 </div>
                                 <div class="nama">{{ $item->name }}</div>
                                 <div class="telepon">{{ $item->phone_number }}</div>
