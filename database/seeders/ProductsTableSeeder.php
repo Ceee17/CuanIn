@@ -1,0 +1,191 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProductsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        // Example data
+        $products = [
+            [
+                'category_id' => 1,
+                'product_code' => 'SS000001',
+                'product_name' => 'Product One',
+                'product_brand' => 'Brand A',
+                'buying_price' => 100,
+                'selling_price' => 150,
+                'discount' => 10,
+                'stock' => 50,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'product_code' => 'SS000002',
+                'product_name' => 'Product Two',
+                'product_brand' => 'Brand B',
+                'buying_price' => 200,
+                'selling_price' => 250,
+                'discount' => 5,
+                'stock' => 30,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'product_code' => 'SS000003',
+                'product_name' => 'Product Three',
+                'product_brand' => 'Brand C',
+                'buying_price' => 300,
+                'selling_price' => 350,
+                'discount' => 0,
+                'stock' => 20,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'product_code' => 'SS000004',
+                'product_name' => 'Product Four',
+                'product_brand' => 'Brand D',
+                'buying_price' => 400,
+                'selling_price' => 450,
+                'discount' => 15,
+                'stock' => 60,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'product_code' => 'SS000005',
+                'product_name' => 'Product Five',
+                'product_brand' => 'Brand E',
+                'buying_price' => 500,
+                'selling_price' => 550,
+                'discount' => 20,
+                'stock' => 10,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'product_code' => 'SS000006',
+                'product_name' => 'Product Six',
+                'product_brand' => 'Brand F',
+                'buying_price' => 600,
+                'selling_price' => 650,
+                'discount' => 25,
+                'stock' => 15,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'product_code' => 'SS000007',
+                'product_name' => 'Product Seven',
+                'product_brand' => 'Brand G',
+                'buying_price' => 700,
+                'selling_price' => 750,
+                'discount' => 30,
+                'stock' => 25,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'product_code' => 'SS000008',
+                'product_name' => 'Product Eight',
+                'product_brand' => 'Brand H',
+                'buying_price' => 800,
+                'selling_price' => 850,
+                'discount' => 35,
+                'stock' => 35,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'product_code' => 'SS000009',
+                'product_name' => 'Product Nine',
+                'product_brand' => 'Brand I',
+                'buying_price' => 900,
+                'selling_price' => 950,
+                'discount' => 40,
+                'stock' => 40,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'product_code' => 'SS000010',
+                'product_name' => 'Product Ten',
+                'product_brand' => 'Brand J',
+                'buying_price' => 1000,
+                'selling_price' => 1050,
+                'discount' => 45,
+                'stock' => 45,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'product_code' => 'SS000011',
+                'product_name' => 'Product Eleven',
+                'product_brand' => 'Brand K',
+                'buying_price' => 1100,
+                'selling_price' => 1150,
+                'discount' => 50,
+                'stock' => 55,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'product_code' => 'SS000012',
+                'product_name' => 'Product Twelve',
+                'product_brand' => 'Brand L',
+                'buying_price' => 1200,
+                'selling_price' => 1250,
+                'discount' => 55,
+                'stock' => 65,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'product_code' => 'SS000013',
+                'product_name' => 'Product Thirteen',
+                'product_brand' => 'Brand M',
+                'buying_price' => 1300,
+                'selling_price' => 1350,
+                'discount' => 60,
+                'stock' => 75,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'product_code' => 'SS000014',
+                'product_name' => 'Product Fourteen',
+                'product_brand' => 'Brand N',
+                'buying_price' => 1400,
+                'selling_price' => 1450,
+                'discount' => 65,
+                'stock' => 85,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
+
+        // Insert data into the database
+        DB::table('products')->insert($products);
+    }
+}

@@ -1,70 +1,61 @@
-@extends('layouts.main')
+@extends('layouts.admin-main')
 
 @section('title')
-    <h1>Dashboard</h1>
+    Cashier Dashboard
 @endsection
-
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <h1 class="ml-2">Welcome Jessen</h1>
+            <h1 class="ml-2">Welcome {{ auth()->user()->name }}</h1>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box">
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">CPU Traffic</span>
+                        <span class="info-box-text">Today's Transactions</span>
                         <span class="info-box-number">
-                            10
-                            <small>%</small>
+                            {{ $totalNewTransactions }}
                         </span>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-box"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Likes</span>
-                        <span class="info-box-number">41,410</span>
+                        <span class="info-box-text">Total Product Stock</span>
+                        <span class="info-box-number">{{ $totalProductStock }}</span>
                     </div>
-
                 </div>
-
             </div>
-
 
             <div class="clearfix hidden-md-up"></div>
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-dollar-sign"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">Sales</span>
-                        <span class="info-box-number">760</span>
+                        <span class="info-box-text">Average Sales / Transaction</span>
+                        <span
+                            class="info-box-number">{{ 'Rp ' . convertCurrencyFormat($averageTotalPricePerTransaction, 2) }}</span>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-cash-register"></i></span>
                     <div class="info-box-content">
-                        <span class="info-box-text">New Members</span>
-                        <span class="info-box-number">2,000</span>
+                        <span class="info-box-text">Today's Sales</span>
+                        <span
+                            class="info-box-number">{{ 'Rp ' . convertCurrencyFormat($sumTotalPriceSalesToday, 2) }}</span>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
+
         <div class="card">
             <div class="card-header border-transparent">
                 <h3 class="card-title">Latest Orders</h3>
@@ -84,71 +75,33 @@
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Popularity</th>
+                                <th>Date</th>
+                                <th>Member?</th>
+                                <th>Quantity</th>
+                                <th>Total Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                </td>
-                            </tr>
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td>{{ $order->sales_id ?? $order->order_id }}
+                                    </td>
+                                    <td>{{ $order->created_at->format('H:i:s | Y-m-d') }}</td>
+                                    <td>{{ $order->member->name ?? 'N/A' }}</td>
+                                    <td>{{ $order->total_item }}</span>
+                                    </td>
+                                    <td>{{ 'Rp. ' . convertCurrencyFormat($order->total_price) }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
-
             </div>
 
             <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                <a href="{{ route('transaksi.baru') }}" class="btn btn-sm btn-info float-left">Buat Transaksi Baru</a>
+                {{-- <a href="{{ route('sales.index') }}" class="btn btn-sm btn-secondary float-right">Tampilkan Semua</a> --}}
             </div>
-
         </div>
     </div>
 @endsection
