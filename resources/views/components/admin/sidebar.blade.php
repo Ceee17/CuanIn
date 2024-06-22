@@ -17,21 +17,17 @@
                     class="img-circle elevation-2" alt="User Image"> --}}
                 <img src="{{ auth()->user()->photo ? asset('storage/' . auth()->user()->photo) : asset('/assets/user.png') }}"
                     class="img-circle elevation-2" alt="User Image">
-
             </div>
             <div class="info">
                 <a href="{{ route('profile.edit') }}" class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
-
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
                 <li class="nav-item">
                     <a href="{{ route('dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -186,7 +182,6 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-
 
 <form action="{{ route('logout') }}" method="post" id="logout-form" style="display: none;">
     @csrf

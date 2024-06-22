@@ -21,7 +21,6 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $setting = Setting::first();
-
         $request->validate([
             'company_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
@@ -43,7 +42,6 @@ class SettingController extends Controller
             if ($setting->logo_path && Storage::exists('public/' . $setting->logo_path)) {
                 Storage::delete('public/' . $setting->logo_path);
             }
-
             $file = $request->file('logo_path');
             $path = $file->store('logos', 'public'); // Store in storage/app/public/logos
 
@@ -63,7 +61,6 @@ class SettingController extends Controller
         }
 
         $setting->save();
-
         return response()->json('Data berhasil disimpan', 200);
     }
 }
