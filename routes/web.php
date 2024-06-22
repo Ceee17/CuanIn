@@ -31,7 +31,6 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
     Route::resource('/category', ProductCategoryController::class);
@@ -60,7 +59,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
     Route::resource('/purchases_detail', PurchasesDetailController::class)
         ->except('create', 'show', 'edit');
-
     Route::get('/sales/data', [SalesController::class, 'data'])->name('sales.data');
     Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
     Route::get('/sales/{id}', [SalesController::class, 'show'])->name('sales.show');
@@ -76,7 +74,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [SalesDetailController::class, 'loadForm'])->name('transaksi.load_form');
     Route::resource('/transaksi', SalesDetailController::class)
         ->except('create', 'show', 'edit');
-
     Route::get('/laporan', [ReportsController::class, 'index'])->name('reports.index');
     Route::get('/laporan/data/{awal}/{akhir}', [ReportsController::class, 'data'])->name('reports.data');
     Route::get('/laporan/pdf/{awal}/{akhir}', [ReportsController::class, 'exportPDF'])->name('reports.export_pdf');
