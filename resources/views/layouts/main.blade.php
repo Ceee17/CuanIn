@@ -67,9 +67,9 @@
                 @yield('content')
 
             </section>
-        <!-- right col -->
-    </div>
-    <!-- /.row (main row) -->
+            <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -129,6 +129,7 @@
     <script src="{{ asset('/AdminLTE-3.2.0/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('/AdminLTE-3.2.0/dist/js/pages/dashboard.js') }}"></script>
-</body>
+    <!-- Validator -->
+    <script src="{{ asset('js/validator.min.js') }}"></script>
 
 </html>

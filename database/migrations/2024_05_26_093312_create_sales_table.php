@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->increments('sales_id');
-            $table->integer('member_id');
+            $table->integer('member_id')->nullable();
             $table->integer('total_item');
             $table->integer('total_price');
             $table->tinyInteger('discount')->default(0);
