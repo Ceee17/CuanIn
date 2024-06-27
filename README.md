@@ -41,3 +41,12 @@
 **Cashier Level**:
 - **Email**: test@example.com
 - **Password**: test123
+
+## To Run This App in Development
+- **npm install**
+- **composer install**
+- **php artisan migrate --seed**
+- **npm run dev**
+- **php artisan serve** OR **Start Web Server on Laragon**
+
+
