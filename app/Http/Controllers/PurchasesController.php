@@ -20,32 +20,47 @@ class PurchasesController extends Controller
         return view('purchases.index', compact('supplier'));
     }
 
+    /**
+     * This function is used to retrieve and format purchase data for the datatable.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function data()
     {
+        // Fetch all purchases ordered by purchase_id in descending order
         $purchases = Purchases::orderBy('purchase_id', 'desc')->get();
 
+        // Use Laravel Datatables to format the purchase data
         return datatables()
             ->of($purchases)
-            ->addIndexColumn()
+            ->addIndexColumn() // Add an auto-incrementing index column
             ->addColumn('total_item', function ($purchases) {
+                // Format total_item to currency format
                 return convertCurrencyFormat($purchases->total_item);
             })
             ->addColumn('total_price', function ($purchases) {
+                // Format total_price to currency format with Rp. prefix
                 return 'Rp. ' . convertCurrencyFormat($purchases->total_price);
             })
             ->addColumn('payment', function ($purchases) {
+                // Format payment to currency format with Rp. prefix
                 return 'Rp. ' . convertCurrencyFormat($purchases->payment);
             })
             ->addColumn('tanggal', function ($purchases) {
+                // Format created_at date to a readable format
                 return convertDateFormat($purchases->created_at, false);
             })
             ->addColumn('supplier', function ($purchases) {
+                // Fetch supplier name from related supplier model
                 return $purchases->supplier->name;
             })
             ->editColumn('discount', function ($purchases) {
+                // Format discount to percentage
                 return $purchases->discount . '%';
             })
             ->addColumn('action', function ($purchases) {
+                // Add action buttons for show and delete
                 return '
                <div class="btn-group">
                <button onclick="showDetail(`' . route('purchases.show', $purchases->purchase_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i> Produk</button>
@@ -53,8 +68,8 @@ class PurchasesController extends Controller
                </div>
                ';
             })
-            ->rawColumns(['action'])
-            ->make(true);
+            ->rawColumns(['action']) // Specify columns that should be rendered as raw HTML
+            ->make(true); // Return the formatted data as a JSON response
     }
 
     //    <button type="button" onclick="editForm(`' . route('purchases.update', $purchases->purchase_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fas fa-pen"></i></button>

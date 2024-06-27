@@ -34,71 +34,91 @@ Route::get('/', fn () => redirect()->route('login'));
 //     return view('admin.dashboard');
 // })->middleware(['auth', 'verified'])->name('admin.dashboard');
 
-
+    /**
+     * This function contains all the routes for the admin and cashier level.
+     * It is wrapped inside a middleware group for authentication and authorization.
+     *
+     * @return void
+     */
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        // Dashboard route
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::group(['middleware' => 'level:1'], function () {
-        Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
-        Route::resource('/category', ProductCategoryController::class);
+        // Admin level routes
+        Route::group(['middleware' => 'level:1'], function () {
+            // Product Category routes
+            Route::get('/category/data', [ProductCategoryController::class, 'data'])->name('category.data');
+            Route::resource('/category', ProductCategoryController::class);
 
-        Route::get('/products/data', [ProductsController::class, 'data'])->name('products.data');
-        Route::post('/products/delete-selected', [ProductsController::class, 'deleteSelected'])->name('products.delete_selected');
-        Route::post('/products/cetak-barcode', [ProductsController::class, 'cetakBarcode'])->name('products.cetak_barcode');
-        Route::resource('/products', ProductsController::class);
+            // Products routes
+            Route::get('/products/data', [ProductsController::class, 'data'])->name('products.data');
+            Route::post('/products/delete-selected', [ProductsController::class, 'deleteSelected'])->name('products.delete_selected');
+            Route::post('/products/cetak-barcode', [ProductsController::class, 'cetakBarcode'])->name('products.cetak_barcode');
+            Route::resource('/products', ProductsController::class);
 
-        Route::get('/member/data', [MembersController::class, 'data'])->name('member.data');
-        Route::post('/member/cetak-member', [MembersController::class, 'cetakMember'])->name('member.cetak_member');
-        Route::resource('/member', MembersController::class);
+            // Members routes
+            Route::get('/member/data', [MembersController::class, 'data'])->name('member.data');
+            Route::post('/member/cetak-member', [MembersController::class, 'cetakMember'])->name('member.cetak_member');
+            Route::resource('/member', MembersController::class);
 
-        Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
-        Route::resource('/supplier', SupplierController::class);
+            // Supplier routes
+            Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
+            Route::resource('/supplier', SupplierController::class);
 
-        Route::get('/spending/data', [SpendingController::class, 'data'])->name('spending.data');
-        Route::resource('/spending', SpendingController::class);
+            // Spending routes
+            Route::get('/spending/data', [SpendingController::class, 'data'])->name('spending.data');
+            Route::resource('/spending', SpendingController::class);
 
-        Route::get('/purchases/data', [PurchasesController::class, 'data'])->name('purchases.data');
-        Route::get('/purchases/{id}/create', [PurchasesController::class, 'create'])->name('purchases.create');
-        Route::resource('/purchases', PurchasesController::class)
-            ->except('create');
+            // Purchases routes
+            Route::get('/purchases/data', [PurchasesController::class, 'data'])->name('purchases.data');
+            Route::get('/purchases/{id}/create', [PurchasesController::class, 'create'])->name('purchases.create');
+            Route::resource('/purchases', PurchasesController::class)
+                ->except('create');
 
-        Route::get('/purchases_detail/{id}/data', [PurchasesDetailController::class, 'data'])->name('purchases_detail.data');
-        Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
-        Route::resource('/purchases_detail', PurchasesDetailController::class)
-            ->except('create', 'show', 'edit');
+            // Purchases Detail routes
+            Route::get('/purchases_detail/{id}/data', [PurchasesDetailController::class, 'data'])->name('purchases_detail.data');
+            Route::get('/purchases_detail/loadform/{diskon}/{total}', [PurchasesDetailController::class, 'loadForm'])->name('purchases_detail.load_form');
+            Route::resource('/purchases_detail', PurchasesDetailController::class)
+                ->except('create', 'show', 'edit');
 
-        Route::get('/sales/data', [SalesController::class, 'data'])->name('sales.data');
-        Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
-        Route::get('/sales/{id}', [SalesController::class, 'show'])->name('sales.show');
-        Route::delete('/sales/{id}', [SalesController::class, 'destroy'])->name('sales.destroy');
+            // Sales routes
+            Route::get('/sales/data', [SalesController::class, 'data'])->name('sales.data');
+            Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+            Route::get('/sales/{id}', [SalesController::class, 'show'])->name('sales.show');
+            Route::delete('/sales/{id}', [SalesController::class, 'destroy'])->name('sales.destroy');
 
+            // Reports routes
+            Route::get('/laporan', [ReportsController::class, 'index'])->name('reports.index');
+            Route::get('/laporan/data/{awal}/{akhir}', [ReportsController::class, 'data'])->name('reports.data');
+            Route::get('/laporan/pdf/{awal}/{akhir}', [ReportsController::class, 'exportPDF'])->name('reports.export_pdf');
 
-        Route::get('/laporan', [ReportsController::class, 'index'])->name('reports.index');
-        Route::get('/laporan/data/{awal}/{akhir}', [ReportsController::class, 'data'])->name('reports.data');
-        Route::get('/laporan/pdf/{awal}/{akhir}', [ReportsController::class, 'exportPDF'])->name('reports.export_pdf');
+            // User routes
+            Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
+            Route::resource('/user', UserController::class);
 
+            // Setting routes
+            Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+            Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
+            Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
+        });
 
-        Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
-        Route::resource('/user', UserController::class);
+        // Cashier level routes
+        Route::group(['middleware' => 'level:1,2'], function () {
+            // Sales transaction routes
+            Route::get('/transaksi/baru', [SalesController::class, 'create'])->name('transaksi.baru');
+            Route::post('/transaksi/simpan', [SalesController::class, 'store'])->name('transaksi.simpan');
+            Route::get('/transaksi/selesai', [SalesController::class, 'selesai'])->name('transaksi.selesai');
+            Route::get('/transaksi/nota-kecil', [SalesController::class, 'notaKecil'])->name('transaksi.nota_kecil');
+            Route::get('/transaksi/nota-besar', [SalesController::class, 'notaBesar'])->name('transaksi.nota_besar');
 
-        Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
-        Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
-        Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
-    });
-
-    Route::group(['middleware' => 'level:1,2'], function () {
-        Route::get('/transaksi/baru', [SalesController::class, 'create'])->name('transaksi.baru');
-        Route::post('/transaksi/simpan', [SalesController::class, 'store'])->name('transaksi.simpan');
-        Route::get('/transaksi/selesai', [SalesController::class, 'selesai'])->name('transaksi.selesai');
-        Route::get('/transaksi/nota-kecil', [SalesController::class, 'notaKecil'])->name('transaksi.nota_kecil');
-        Route::get('/transaksi/nota-besar', [SalesController::class, 'notaBesar'])->name('transaksi.nota_besar');
-
-        Route::get('/transaksi/{id}/data', [SalesDetailController::class, 'data'])->name('transaksi.data');
-        Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [SalesDetailController::class, 'loadForm'])->name('transaksi.load_form');
-        Route::resource('/transaksi', SalesDetailController::class)
-            ->except('create', 'show', 'edit');
-    });
-});
+            // Sales Detail routes
+            Route::get('/transaksi/{id}/data', [SalesDetailController::class, 'data'])->name('transaksi.data');
+            Route::get('/transaksi/loadform/{diskon}/{total}/{diterima}', [SalesDetailController::class, 'loadForm'])->name('transaksi.load_form');
+            Route::resource('/transaksi', SalesDetailController::class)
+                ->except('create', 'show', 'edit');
+        });
+    }
+);
 
 
 Route::middleware('auth')->group(function () {

@@ -31,36 +31,64 @@ class SalesDetailController extends Controller
         }
     }
 
+    /**
+     * This function is used to retrieve sales details data for a specific sales transaction.
+     *
+     * @param int $id The ID of the sales transaction.
+     * @return \Illuminate\Http\JsonResponse The JSON response containing the sales details data.
+     */
     public function data($id)
     {
+        // Fetch sales details with related products using Eloquent ORM
         $detail = SalesDetail::with('products')
             ->where('sales_id', $id)
             ->get();
 
+        // Initialize data array and total variables
         $data = array();
         $total = 0;
         $total_item = 0;
 
+        // Loop through each sales detail
         foreach ($detail as $item) {
             $row = array();
+
+            // Format product code and add label
             $row['product_code'] = '<span class="label label-success">' . $item->products['product_code'] . '</span';
+
+            // Add product name
             $row['product_name'] = $item->products['product_name'];
+
+            // Format selling price and add currency symbol
             $row['selling_price']  = 'Rp. ' . convertCurrencyFormat($item->selling_price);
+
+            // Add input field for amount with data-id attribute
             $row['amount']      = '<input type="number" class="form-control input-sm quantity" data-id="' . $item->sales_detail_id . '" value="' . $item->amount . '">';
+
+            // Add discount percentage
             $row['discount']      = $item->discount . '%';
+
+            // Format subtotal and add currency symbol
             $row['subtotal']    = 'Rp. ' . convertCurrencyFormat($item->subtotal);
+
+            // Add delete button with route to destroy method
             $row['action']        = '<div class="btn-group">
                                     <button onclick="deleteData(`' . route('transaksi.destroy', $item->sales_detail_id) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
                                 </div>';
+
+            // Add row to data array
             $data[] = $row;
 
-            $total += $item->selling_price * $item->amount - (($item->discount * $item->amount) / 100 * $item->selling_price);;
+            // Calculate total and total item
+            $total += $item->selling_price * $item->amount - (($item->discount * $item->amount) / 100 * $item->selling_price);
             $total_item += $item->amount;
         }
+
+        // Add total and total item to data array
         $data[] = [
             'product_code' => '
-                <div class="total hide">' . $total . '</div>
-                <div class="total_item hide">' . $total_item . '</div>',
+            <div class="total hide">' . $total . '</div>
+            <div class="total_item hide">' . $total_item . '</div>',
             'product_name' => '',
             'selling_price'  => '',
             'amount'      => '',
@@ -69,6 +97,7 @@ class SalesDetailController extends Controller
             'action'        => '',
         ];
 
+        // Return JSON response using Laravel's datatables() helper
         return datatables()
             ->of($data)
             ->addIndexColumn()

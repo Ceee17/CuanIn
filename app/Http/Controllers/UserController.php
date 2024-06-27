@@ -144,27 +144,41 @@ class UserController extends Controller
     }
 
 
+    /**
+     * Update the user's profile photo.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function updateProfilePhoto(Request $request)
     {
+        // Get the authenticated user
         $user = auth()->user();
 
+        // Validate the incoming request
         $request->validate([
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        // Check if a new photo is provided
         if ($request->hasFile('photo')) {
-            // Delete old photo if exists
+            // Delete the old photo if it exists
             if ($user->photo && Storage::exists($user->photo)) {
                 Storage::delete($user->photo);
             }
 
+            // Store the new photo in the storage directory
             $file = $request->file('photo');
             $path = $file->store('photos', 'public'); // Store in storage/app/public/photos
 
+            // Update the user's photo path
             $user->photo = $path;
             $user->save();
         }
 
+        // Redirect back to the profile edit page with a success message
         return redirect()->route('profile.edit')->with('status', 'photo-updated');
     }
 }

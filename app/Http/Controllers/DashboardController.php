@@ -1,4 +1,7 @@
 <?php
+/* The `DashboardController` class in a Laravel application retrieves and processes various data to
+display on the dashboard based on the user's level, including entity counts, revenue data, metrics,
+recent orders, and recently added products. */
 
 namespace App\Http\Controllers;
 
@@ -14,6 +17,15 @@ use App\Models\ProductCategory;
 
 class DashboardController extends Controller
 {
+    /**
+     * The index function retrieves various entity counts, revenue data, dashboard metrics, recent
+     * orders, and recently added products, and renders the appropriate view based on user level.
+     *
+     * `index` function is returning a view based on the user's level. If the user's level
+     * is 1 (admin), it returns the 'admin.dashboard' view with various data including counts of
+     * entities, date range, daily revenue data, dashboard metrics, recent orders, and recently added
+     * products. If the user's level is not 1 (cashier), it returns the 'cashier
+     */
     public function index()
     {
         // Get counts of various entities

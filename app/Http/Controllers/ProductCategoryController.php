@@ -15,23 +15,32 @@ class ProductCategoryController extends Controller
         return view('category.index');
     }
 
+    /**
+     * This function is used to retrieve and format data for the product category datatable.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function data()
     {
+        // Fetch all product categories ordered by category_id in descending order
         $product_category = ProductCategory::orderBy('category_id', 'desc')->get();
 
+        // Use Laravel Datatables to format the fetched data
         return datatables()
             ->of($product_category)
-            ->addIndexColumn()
+            ->addIndexColumn() // Add an auto-incrementing index column to the table
             ->addColumn('action', function ($product_category) {
+                // Add action buttons for editing and deleting records
                 return '
-                <div class="btn-group" role="group">
-                    <button onclick="editForm(`'. route('category.update', $product_category->category_id) .'`)" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></button>
-                    <button onclick="deleteData(`'. route('category.destroy', $product_category->category_id) .'`)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                </div>
-                ';
+            <div class="btn-group" role="group">
+                <button onclick="editForm(`' . route('category.update', $product_category->category_id) . '`)" class="btn btn-sm btn-info"><i class="fas fa-pen"></i></button>
+                <button onclick="deleteData(`' . route('category.destroy', $product_category->category_id) . '`)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+            </div>
+            ';
             })
-            ->rawColumns(['action'])
-            ->make(true);
+            ->rawColumns(['action']) // Indicate that the 'action' column contains raw HTML
+            ->make(true); // Return the formatted data as a JSON response
     }
 
 

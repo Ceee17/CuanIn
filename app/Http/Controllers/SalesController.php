@@ -20,45 +20,61 @@ class SalesController extends Controller
         return view('sales.index');
     }
 
+    /**
+     * This function is used to retrieve sales data and format it for a datatable.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function data()
     {
+        // Fetch all sales data with related member data, ordered by sales_id in descending order
         $sales = Sales::with('member')->orderBy('sales_id', 'desc')->get();
 
+        // Use Laravel Datatables to format the sales data for the datatable
         return datatables()
             ->of($sales)
-            ->addIndexColumn()
+            ->addIndexColumn() // Add an index column to the table
             ->addColumn('total_item', function ($sales) {
+                // Format the total_item column to a readable format
                 return convertCurrencyFormat($sales->total_item);
             })
             ->addColumn('total_price', function ($sales) {
+                // Format the total_price column to a readable format with currency symbol
                 return 'Rp. ' . convertCurrencyFormat($sales->total_price);
             })
             ->addColumn('payment', function ($sales) {
+                // Format the payment column to a readable format with currency symbol
                 return 'Rp. ' . convertCurrencyFormat($sales->payment);
             })
             ->addColumn('date', function ($sales) {
+                // Format the created_at column to a readable date format
                 return convertDateFormat($sales->created_at, false);
             })
             ->addColumn('member_code', function ($sales) {
+                // Add a member_code column with a label and member code
                 $member = $sales->member->member_code ?? '';
                 return '<span class="label label-success">' . $member . '</span>';
             })
             ->editColumn('discount', function ($sales) {
+                // Format the discount column to a readable percentage format
                 return $sales->discount . '%';
             })
             ->editColumn('cashier', function ($sales) {
+                // Add a cashier column with the user name
                 return $sales->user->name ?? '';
             })
             ->addColumn('action', function ($sales) {
+                // Add an action column with buttons to show and delete sales data
                 return '
-                <div class="btn-group">
-                    <button onclick="showDetail(`' . route('sales.show', $sales->sales_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
-                    <button onclick="deleteData(`' . route('sales.destroy', $sales->sales_id) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
-                </div>
-                ';
+            <div class="btn-group">
+                <button onclick="showDetail(`' . route('sales.show', $sales->sales_id) . '`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
+                <button onclick="deleteData(`' . route('sales.destroy', $sales->sales_id) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+            </div>
+            ';
             })
-            ->rawColumns(['action', 'member_code'])
-            ->make(true);
+            ->rawColumns(['action', 'member_code']) // Specify columns that should not be escaped
+            ->make(true); // Return the formatted data as a JSON response
     }
 
 
