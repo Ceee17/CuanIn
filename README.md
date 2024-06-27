@@ -26,12 +26,12 @@
 [CuanIn GitHub Repository](https://github.com/Ceee17/CuanIn)
 
 ## Project Files
-- **PPT Presentation**: [Link to PPT](#) *(Replace with actual link)*
-- **Project Report**: [Link to Report](#) *(Replace with actual link)*
+- **PPT Presentation**: [Link to PPT](https://drive.google.com/file/d/1-G4dVzJ-lujYrCknNEn6vum4z593Ogqs/view?usp=sharing)
+- **Project Report**: [Link to Report](https://drive.google.com/file/d/14bpApXDmiYUKbWrBf3N-mOqWL_ELi1rP/view?usp=sharing)
 
 ## Presentation and Demo
-- **Video Presentation**: [Link to Video](#) *(Replace with actual link)*
-- **App Demo**: [Link to Demo](#) *(Replace with actual link)*
+- **Video Presentation**: [Link to Video](https://youtu.be/ZR03shtZTXI)
+- **App Demo**: [Link to Demo](https://youtu.be/_wH5WRUr9pI)
 
 ## Application Login Information
 **Admin Level**:
